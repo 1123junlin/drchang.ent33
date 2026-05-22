@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>白袍人生學院 · 近期活動</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark: #00424f;
+    --teal:      #005f6e;
+    --teal-mid:  #007a8a;
+    --teal-soft: #4da8b8;
+    --teal-pale: #e6f4f6;
+    --bg:        #eeeff0;
+    --white:     #ffffff;
+    --border:    #d0e4e8;
+    --text:      #1a2e32;
+    --text-mid:  #3a5c62;
+    --text-soft: #6a8c92;
+    --tag-online-bg:  #dff2ee;
+    --tag-online-c:   #005042;
+    --tag-offline-bg: #ddeaf4;
+    --tag-offline-c:  #003554;
+    --green-bg:  #e4f2ea;
+    --green-c:   #1a5e38;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); font-family: 'Noto Sans TC', sans-serif; color: var(--text); min-height: 100vh; }
+
+  header {
+    background: var(--teal-dark);
+    padding: 44px 24px 40px;
+    text-align: center;
+  }
+  .header-sub { font-size: 18px; letter-spacing: 5px; color: rgba(255,255,255,0.7); margin-bottom: 14px; text-transform: uppercase; }
+  header h1  { font-family: 'Noto Serif TC', serif; font-size: 46px; font-weight: 700; color: #fff; letter-spacing: 3px; }
+  .header-line { width: 52px; height: 4px; background: var(--teal-soft); margin: 20px auto 0; border-radius: 2px; }
+
+  .count-bar { padding: 24px 24px 12px; font-size: 17px; color: var(--text-soft); font-weight: 500; }
+
+  .card-list { padding: 4px 16px 80px; display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    background: var(--white); border-radius: 12px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,50,60,0.07), 0 4px 18px rgba(0,50,60,0.05);
+    cursor: pointer; transition: box-shadow 0.2s, transform 0.15s;
+    animation: fadeUp 0.35s ease both;
+  }
+  .card:hover  { box-shadow: 0 6px 24px rgba(0,50,60,0.13); transform: translateY(-2px); }
+  .card:active { transform: scale(0.99); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+  .card-stripe { height: 5px; background: linear-gradient(90deg, var(--teal-dark), var(--teal-mid)); }
+  .card-stripe.online { background: linear-gradient(90deg, var(--teal-mid), var(--teal-soft)); }
+
+  .card-body { padding: 22px 20px 16px; }
+  .card-tags  { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tag { font-size: 14px; padding: 5px 14px; border-radius: 20px; font-weight: 500; }
+  .tag-online   { background: var(--tag-online-bg);  color: var(--tag-online-c); }
+  .tag-offline  { background: var(--tag-offline-bg); color: var(--tag-offline-c); }
+  .tag-open     { background: var(--green-bg); color: var(--green-c); font-weight: 700; }
+  .tag-past     { background: #f0f0f0; color: #999; }
+  .tag-ended    { background: #f0e6f6; color: #5a2d7a; }
+  .tag-planning { background: #fff3e0; color: #8a5400; }
+  .tag-full     { background: #fce8e8; color: #8a2020; }
+
+  .card-title { font-family: 'Noto Serif TC', serif; font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.5; margin-bottom: 16px; }
+
+  .card-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .meta-row  { display: flex; align-items: flex-start; gap: 8px; font-size: 15px; color: var(--text-mid); line-height: 1.5; }
+  .meta-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+
+  .card-footer { padding: 4px 20px 20px; display: flex; gap: 10px; }
+  .btn { flex: 1; padding: 13px 0; border-radius: 8px; border: none; font-family: 'Noto Sans TC', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.18s; }
+  .btn-dm     { background: var(--teal-pale); border: 1.5px solid var(--border); color: var(--teal); }
+  .btn-dm:hover { background: var(--border); }
+  .btn-signup { background: var(--teal-dark); color: #fff; font-weight: 700; }
+  .btn-signup:hover { background: var(--teal); }
+  .btn:active { opacity: 0.82; }
+
+  .card-planning { cursor: default; }
+  .card-planning:hover { transform: none; box-shadow: 0 1px 4px rgba(0,50,60,0.07), 0 4px 18px rgba(0,50,60,0.05); }
+
+  .share-section {
+    margin-top: 14px; padding: 12px 14px;
+    background: #f7f3fd; border-radius: 10px; border-left: 4px solid #9b59b6;
+  }
+  .share-label { font-size: 13px; font-weight: 700; color: #5a2d7a; margin-bottom: 8px; letter-spacing: 1px; }
+  .share-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 13px; color: var(--text-mid); padding: 5px 0;
+    border-bottom: 1px dashed #d9c8e8; word-break: break-all; line-height: 1.5;
+  }
+  .share-item:last-child { border-bottom: none; }
+  .share-num { flex-shrink: 0; color: #9b59b6; font-weight: 700; }
+  .share-item a { color: #6a2fa0; text-decoration: none; }
+  .share-item a:hover { text-decoration: underline; }
+
+  .state-msg { text-align: center; padding: 60px 20px; font-size: 16px; color: var(--text-soft); }
+  .spinner {
+    width: 36px; height: 36px; border: 3px solid var(--border);
+    border-top-color: var(--teal-mid); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Modal */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,25,30,0.62); z-index: 200; align-items: flex-end; justify-content: center; }
+  .overlay.open { display: flex; }
+  .modal { background: var(--white); border-radius: 20px 20px 0 0; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto; animation: slideUp 0.28s cubic-bezier(0.3,1.2,0.6,1); }
+  @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .modal-grip { width: 44px; height: 5px; background: #dde5e7; border-radius: 3px; margin: 14px auto 0; }
+  .modal-head { padding: 18px 22px 16px; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); }
+  .modal-head-title { font-family: 'Noto Serif TC', serif; font-size: 21px; font-weight: 700; color: var(--teal-dark); line-height: 1.4; flex: 1; }
+  .modal-close { width: 34px; height: 34px; border-radius: 50%; background: #f0f2f2; border: none; cursor: pointer; font-size: 16px; color: #555; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .modal-close:hover { background: #e0e4e4; }
+
+  .modal-dm { padding: 18px 20px 10px; }
+  .modal-dm img { width: 100%; border-radius: 10px; display: block; }
+  .modal-dm-placeholder { background: #f4f6f7; border-radius: 10px; height: 180px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 14px; }
+
+  .modal-info { padding: 18px 22px 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+  .modal-info-row { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: var(--text-mid); line-height: 1.5; }
+  .modal-info-icon { font-size: 18px; flex-shrink: 0; }
+
+  .modal-shares { padding: 0 22px 18px; border-top: 1px solid var(--border); }
+  .modal-shares-title { font-size: 14px; font-weight: 700; color: #5a2d7a; margin: 16px 0 10px; letter-spacing: 1px; }
+  .modal-share-item { display: flex; gap: 8px; font-size: 14px; color: var(--text-mid); padding: 6px 0; border-bottom: 1px dashed #e0d0f0; word-break: break-all; line-height: 1.5; }
+  .modal-share-item:last-child { border-bottom: none; }
+  .modal-share-item a { color: #6a2fa0; text-decoration: none; }
+  .modal-share-item a:hover { text-decoration: underline; }
+
+  .modal-actions { padding: 14px 20px 38px; display: flex; flex-direction: column; gap: 10px; }
+  .modal-btn { display: block; width: 100%; padding: 16px; border-radius: 10px; border: none; font-family: 'Noto Sans TC', sans-serif; font-size: 16px; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; transition: opacity 0.18s, background 0.18s; }
+  .modal-btn:active { opacity: 0.8; }
+  .modal-btn-primary   { background: var(--teal-dark); color: #fff; }
+  .modal-btn-primary:hover { background: var(--teal); }
+  .modal-btn-secondary { background: var(--teal-pale); border: 1.5px solid var(--border); color: var(--teal); }
+  .modal-btn-secondary:hover { background: var(--border); }
+  .modal-no-signup { text-align: center; font-size: 15px; color: var(--text-soft); padding: 10px 0 4px; }
+
+  .header-dl {
+    margin: 18px auto 0;
+    display: inline-block;
+    padding: 10px 26px;
+    border-radius: 24px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.92);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .header-dl:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-sub">白袍人生學院</div>
+  <h1>近期活動</h1>
+  <div class="header-line"></div>
+  <div style="text-align:center;margin-top:18px;">
+    <a id="headerDlBtn" class="header-dl" href="#" target="_blank" download style="display:none;">
+      📄 精英醫師訪談專刊下載
+    </a>
+  </div>
+</header>
+
+<div class="count-bar" id="countBar"></div>
+<div class="card-list" id="cardList">
+  <div class="state-msg"><div class="spinner"></div>載入活動中…</div>
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-grip"></div>
+    <div class="modal-head">
+      <div class="modal-head-title" id="mTitle"></div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-dm"     id="mDm"></div>
+    <div class="modal-info"   id="mInfo"></div>
+    <div class="modal-shares" id="mShares" style="display:none"></div>
+    <div class="modal-actions" id="mActions"></div>
+  </div>
+</div>
+
+<script>
+const SHEET_ID  = '1DtKZiuGA5bN8f7gABgKSLfFMOUSL3gdKfmUjcUdkh2Q';
+const SHEET_GID = '0';
+const CSV_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`;
+
+// 欄位對應（A=0, B=1 … R=17）
+// A 課程狀態 | B 活動名稱 | C 活動日期 | D 活動S-time | E 活動D-time
+// F 活動講師 | G 活動地點 | H 活動形式 | I 重要性 | J 負責人
+// K 報名費用 | L 開放LINE OA報名 | M 會員報名連結 | N 白院群友報名連結
+// O 活動DM   | P 學員分享#1 | Q 學員分享#2 | R 學員分享#3
+const COL = {
+  status:0, name:1, date:2, stime:3, dtime:4,
+  speaker:5, location:6, format:7, importance:8, manager:9,
+  fee:10, signupOpen:11, memberLink:12, friendLink:13,
+  dm:14, share1:15, share2:16, share3:17, journal:18
+};
+
+let ACTIVITIES = [];
+const TODAY = new Date();
+
+function parseCSV(text) {
+  const rows = [];
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    const cols = []; let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+      else { cur += c; }
+    }
+    cols.push(cur.trim());
+    rows.push(cols);
+  }
+  return rows;
+}
+
+function toRawUrl(url) {
+  if (!url) return '';
+  return url
+    .replace('https://github.com/', 'https://raw.githubusercontent.com/')
+    .replace('/blob/', '/');
+}
+
+function isPast(dateStr) {
+  if (!dateStr) return false;
+  return new Date(dateStr.replace(/\//g, '-')) < TODAY;
+}
+
+function fmt(t) { return (t || '').substring(0, 5); }
+
+async function loadData() {
+  try {
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rows = parseCSV(await res.text());
+    // 專刊：S欄（index 18），取第一筆有值的，更新 header 按鈕
+    const dataRows = rows.slice(1).filter(r => r[COL.name] && r[COL.name].trim());
+    const journalUrl = toRawUrl(dataRows.map(r => r[COL.journal] || '').find(v => v.trim()) || '');
+    const dlBtn = document.getElementById('headerDlBtn');
+    if (journalUrl) { dlBtn.href = journalUrl; dlBtn.style.display = 'inline-block'; }
+    else { dlBtn.style.display = 'none'; }
+
+    ACTIVITIES = rows.slice(1)
+      .filter(r => r[COL.name] && r[COL.name].trim())
+      .map(r => ({
+        status:     (r[COL.status]     || '').trim(),
+        name:        r[COL.name]        || '',
+        date:        r[COL.date]        || '',
+        stime:       r[COL.stime]       || '',
+        dtime:       r[COL.dtime]       || '',
+        speaker:     r[COL.speaker]     || '',
+        location:    r[COL.location]    || '',
+        format:      r[COL.format]      || '',
+        signupOpen: (r[COL.signupOpen] || '').trim().toUpperCase() === 'Y',
+        memberLink:  r[COL.memberLink]  || '',
+        friendLink:  r[COL.friendLink]  || '',
+        dm:          toRawUrl(r[COL.dm] || ''),
+        share1:      r[COL.share1]      || '',
+        share2:      r[COL.share2]      || '',
+        share3:      r[COL.share3]      || '',
+      }));
+    // 規劃中排到最後
+    ACTIVITIES.sort((a, b) => {
+      const aP = a.status === '規劃中' ? 1 : 0;
+      const bP = b.status === '規劃中' ? 1 : 0;
+      return aP - bP;
+    });
+    renderCards();
+  } catch(e) {
+    document.getElementById('cardList').innerHTML =
+      `<div class="state-msg">⚠️ 活動資料載入失敗，請稍後重試。<br><small style="color:#aaa;font-size:12px;margin-top:8px;display:block">${e.message}</small></div>`;
+  }
+}
+
+function renderCards() {
+  const countBar = document.getElementById('countBar');
+  const list = document.getElementById('cardList');
+  if (!ACTIVITIES.length) {
+    countBar.textContent = '';
+    list.innerHTML = '<div class="state-msg">目前沒有活動資料</div>';
+    return;
+  }
+  countBar.textContent = `共 ${ACTIVITIES.length} 場活動`;
+  list.innerHTML = ACTIVITIES.map((a, i) => {
+    const online = a.format === '線上';
+    const status = a.status;
+
+    // 規劃中：只顯示名稱
+    if (status === '規劃中') {
+      return `
+      <div class="card card-planning" style="animation-delay:${i*0.06}s">
+        <div class="card-stripe ${online?'online':''}"></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-planning">🗓 規劃中</span>
+            ${a.format ? `<span class="tag ${online?'tag-online':'tag-offline'}">${a.format}</span>` : ''}
+          </div>
+          <div class="card-title">${a.name}</div>
+        </div>
+      </div>`;
+    }
+
+    // 課程結束：學員分享
+    const shares = [a.share1, a.share2, a.share3].filter(s => s && s.trim());
+    const shareHTML = (status === '課程結束' && shares.length) ? `
+      <div class="share-section">
+        <div class="share-label">💬 學員分享</div>
+        ${shares.map((s,idx) => {
+          const isUrl = /^https?:\/\//.test(s.trim());
+          const label = `學員分享${idx+1}`;
+          return `<div class="share-item"><span class="share-num">＃${idx+1}</span>${
+            isUrl ? `<a href="${s.trim()}" target="_blank" rel="noopener">${label}</a>`
+                  : `<span>${label}</span>`}</div>`;
+        }).join('')}
+      </div>` : '';
+
+    // 狀態 badge
+    let statusTag = '';
+    if      (status === '課程結束') statusTag = '<span class="tag tag-ended">✅ 課程結束</span>';
+    else if (status === '招生額滿') statusTag = '<span class="tag tag-full">🔒 招生額滿</span>';
+
+    const past  = isPast(a.date);
+    const stime = fmt(a.stime);
+    const dtime = fmt(a.dtime);
+
+    return `
+    <div class="card" style="animation-delay:${i*0.06}s" onclick="openModal(${i})">
+      <div class="card-stripe ${online?'online':''}"></div>
+      <div class="card-body">
+        <div class="card-tags">
+          <span class="tag ${online?'tag-online':'tag-offline'}">${a.format||'—'}</span>
+          ${statusTag}
+          ${a.signupOpen ? '<span class="tag tag-open">✦ 開放報名</span>' : ''}
+          ${(!statusTag && past) ? '<span class="tag tag-past">已結束</span>' : ''}
+        </div>
+        <div class="card-title">${a.name}</div>
+        <div class="card-meta">
+          <div class="meta-row"><span class="meta-icon">📅</span><span>${a.date}</span></div>
+          <div class="meta-row"><span class="meta-icon">🕐</span><span>${stime}${dtime?' – '+dtime:''}</span></div>
+          <div class="meta-row"><span class="meta-icon">🎙</span><span>${a.speaker}</span></div>
+          <div class="meta-row"><span class="meta-icon">📍</span><span>${a.location}</span></div>
+        </div>
+        ${shareHTML}
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-dm" onclick="event.stopPropagation();openModal(${i})">查看 DM</button>
+        ${a.signupOpen ? `<button class="btn btn-signup" onclick="event.stopPropagation();openModal(${i})">立即報名</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openModal(i) {
+  const a = ACTIVITIES[i];
+  const stime = fmt(a.stime), dtime = fmt(a.dtime);
+
+  document.getElementById('mTitle').textContent = a.name;
+
+  document.getElementById('mDm').innerHTML = a.dm
+    ? `<img src="${a.dm}" alt="活動DM" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'modal-dm-placeholder\\'>DM 圖片暫無法顯示</div>'">`
+    : `<div class="modal-dm-placeholder">尚無活動 DM</div>`;
+
+  document.getElementById('mInfo').innerHTML = `
+    <div class="modal-info-row"><span class="modal-info-icon">📅</span><span>${a.date}${stime?'（'+stime+(dtime?' – '+dtime:'')+'）':''}</span></div>
+    <div class="modal-info-row"><span class="modal-info-icon">🎙</span><span>${a.speaker}</span></div>
+    <div class="modal-info-row"><span class="modal-info-icon">📍</span><span>${a.location}${a.format?'（'+a.format+'）':''}</span></div>
+    ${a.status?`<div class="modal-info-row"><span class="modal-info-icon">📌</span><span>${a.status}</span></div>`:''}`;
+
+  const shares = [a.share1, a.share2, a.share3].filter(s => s && s.trim());
+  const mShares = document.getElementById('mShares');
+  if (a.status === '課程結束' && shares.length) {
+    mShares.style.display = 'block';
+    mShares.innerHTML = `<div class="modal-shares-title">💬 學員分享</div>` +
+      shares.map((s, idx) => {
+        const isUrl = /^https?:\/\//.test(s.trim());
+        const label = `學員分享${idx+1}`;
+        return `<div class="modal-share-item"><span style="color:#9b59b6;font-weight:700;flex-shrink:0">＃${idx+1}</span>${
+          isUrl ? `<a href="${s.trim()}" target="_blank" rel="noopener">${label}</a>`
+                : `<span>${label}</span>`}</div>`;
+      }).join('');
+  } else {
+    mShares.style.display = 'none';
+    mShares.innerHTML = '';
+  }
+
+  let html = '';
+  if (a.signupOpen) {
+    if (a.memberLink && !['已截止報名','請洽官方LINE'].includes(a.memberLink))
+      html += `<a class="modal-btn modal-btn-primary" href="${a.memberLink}" target="_blank">🖊 立即報名</a>`;
+    if (a.friendLink && a.friendLink !== '請洽官方LINE')
+      html += `<a class="modal-btn modal-btn-secondary" href="${a.friendLink}" target="_blank">群友報名連結</a>`;
+    if (!html) html = `<div class="modal-no-signup">請洽官方LINE</div>`;
+  } else {
+    html = `<div class="modal-no-signup">報名已截止</div>`;
+  }
+  document.getElementById('mActions').innerHTML = html;
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) { if (e.target === document.getElementById('overlay')) closeModalDirect(); }
+function closeModalDirect() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+loadData();
+</script>
+</body>
+</html>
