@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>5/17 Dr. 陳昱傑 AI 實戰 ｜ 學員見證牆 ｜ 白袍人生學院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { font-family:"Noto Sans TC","Inter",-apple-system,sans-serif; background:#0f0c29; background:linear-gradient(135deg,#24243e 0%,#302b63 50%,#0f0c29 100%); color:#fff; min-height:100vh; overflow-x:hidden; }
+.blob { position:fixed; border-radius:50%; filter:blur(120px); opacity:0.4; pointer-events:none; z-index:0; }
+.blob1 { width:500px;height:500px; background:#FF6B9D; top:-100px; left:-100px; }
+.blob2 { width:400px;height:400px; background:#43E5F4; top:30%; right:-100px; }
+.blob3 { width:600px;height:600px; background:#7F00FF; bottom:-200px; left:30%; }
+.hero { position:relative; z-index:1; padding:80px 24px 60px; text-align:center; max-width:1200px; margin:0 auto; }
+.badge { display:inline-flex; align-items:center; gap:8px; padding:8px 20px; border-radius:999px; background:rgba(255,255,255,0.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.2); font-size:14px; font-weight:500; margin-bottom:24px; }
+.badge-dot { width:8px;height:8px;border-radius:50%; background:#43E5F4; box-shadow:0 0 12px #43E5F4; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero h1 { font-size:clamp(40px,7vw,84px); font-weight:900; letter-spacing:-0.02em; line-height:1.05; background:linear-gradient(135deg,#FF6B9D 0%,#FFD93D 50%,#43E5F4 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; margin-bottom:20px; }
+.hero .sub { font-size:clamp(16px,2vw,22px); opacity:0.9; max-width:720px; margin:0 auto 16px; line-height:1.6; }
+.hero .meta { font-size:14px; opacity:0.6; letter-spacing:0.1em; }
+.stats { position:relative; z-index:1; max-width:1200px; margin:40px auto 60px; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.stat-card { background:rgba(255,255,255,0.08); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.15); border-radius:24px; padding:28px 24px; text-align:center; transition:transform 0.3s,background 0.3s; }
+.stat-card:hover { transform:translateY(-4px); background:rgba(255,255,255,0.12); }
+.stat-number { font-size:54px; font-weight:900; line-height:1; background:linear-gradient(135deg,#FFD93D 0%,#FF6B9D 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.stat-unit { font-size:20px; opacity:0.7; margin-left:4px; }
+.stat-label { font-size:14px; opacity:0.7; margin-top:8px; letter-spacing:0.05em; }
+.ratings { position:relative; z-index:1; max-width:1200px; margin:0 auto 80px; padding:0 24px; }
+.ratings h2 { font-size:30px; font-weight:900; margin-bottom:24px; display:flex; align-items:center; gap:12px; color:#FFD93D; }
+.rating-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+.rating-item { background:rgba(255,255,255,0.06); border-radius:20px; padding:20px 24px; border:1px solid rgba(255,255,255,0.1); }
+.rating-top { display:flex; justify-content:space-between; margin-bottom:12px; align-items:baseline; }
+.rating-label { font-size:15px; font-weight:500; }
+.rating-score { font-size:22px; font-weight:800; color:#FFD93D; }
+.rating-bar { height:8px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden; }
+.rating-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#FFD93D,#FF6B9D,#7F00FF); }
+.wall-header { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 24px 30px; text-align:center; }
+.wall-pill { display:inline-flex; align-items:center; gap:8px; padding:8px 18px; margin-bottom:16px; background:linear-gradient(135deg,rgba(255,217,61,0.2),rgba(255,107,157,0.2)); border:1.5px solid rgba(255,217,61,0.5); border-radius:99px; font-size:13px; font-weight:600; color:#FFD93D; letter-spacing:0.1em; text-shadow:0 0 12px rgba(255,217,61,0.4); }
+.wall-header h2 { font-size:clamp(36px,5.5vw,58px); font-weight:900; margin-bottom:16px; background:linear-gradient(135deg,#FFD93D 0%,#FF6B9D 35%,#7F00FF 70%,#43E5F4 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; filter:drop-shadow(0 4px 20px rgba(255,217,61,0.3)); letter-spacing:-0.02em; }
+.wall-header p { font-size:17px; opacity:0.8; max-width:640px; margin:0 auto; }
+.filter-bar { max-width:680px; margin:20px auto 0; display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.filter-bar input { flex:1; min-width:240px; padding:12px 20px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); backdrop-filter:blur(20px); color:#fff; border-radius:999px; font-size:14px; outline:none; font-family:inherit; }
+.filter-bar input::placeholder { color:rgba(255,255,255,0.4); }
+.chip { padding:12px 18px; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); font-size:13px; font-weight:600; color:#fff; transition:all 0.2s; font-family:inherit; }
+.chip:hover { background:rgba(255,255,255,0.15); }
+.chip.active { background:linear-gradient(135deg,#FFD93D,#FF6B9D); border-color:transparent; color:#1a1a1a; box-shadow:0 4px 20px rgba(255,107,157,0.4); }
+.wall { position:relative; z-index:1; max-width:1400px; margin:0 auto; padding:30px 24px 80px; columns:3; column-gap:20px; }
+@media (max-width:1024px) { .wall { columns:2; } }
+@media (max-width:640px) { .wall { columns:1; } }
+.card { break-inside:avoid; margin-bottom:20px; display:block; animation:fadeUp 0.6s ease-out backwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+.card-inner { padding:28px 26px 22px; border-radius:24px; position:relative; overflow:hidden; color:#fff; box-shadow:0 10px 40px rgba(0,0,0,0.3); transition:transform 0.3s,box-shadow 0.3s; }
+.card-inner::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.15),transparent 40%); pointer-events:none; }
+.card:hover .card-inner { transform:translateY(-4px) scale(1.01); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+.post-badge { position:absolute; top:14px; left:14px; padding:4px 10px; border-radius:99px; background:rgba(0,0,0,0.35); backdrop-filter:blur(10px); font-size:11px; font-weight:700; letter-spacing:0.05em; border:1px solid rgba(255,255,255,0.35); color:#FFEB3B; }
+.stars { font-size:14px; letter-spacing:3px; margin-bottom:10px; margin-top:14px; }
+.quote-mark { font-size:64px; font-weight:900; line-height:0.6; position:absolute; top:18px; right:24px; opacity:0.25; font-family:Georgia,serif; }
+.text { font-size:15px; line-height:1.75; white-space:pre-line; margin-bottom:20px; font-weight:400; text-shadow:0 1px 2px rgba(0,0,0,0.1); }
+.author { display:flex; align-items:center; gap:12px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.25); }
+.avatar { width:44px;height:44px; border-radius:50%; background:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.avatar svg { width:26px;height:26px; }
+.author-name { font-weight:700; font-size:15px; }
+.author-label { font-size:12px; opacity:0.8; margin-top:2px; }
+.links { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
+.link-btn { display:inline-flex; align-items:center; gap:4px; padding:8px 14px; border-radius:99px; background:rgba(255,255,255,0.95); color:#1a1a1a; font-size:12px; font-weight:700; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+.link-btn:hover { background:#FFD93D; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+.footer { position:relative; z-index:1; text-align:center; padding:40px 24px 60px; border-top:1px solid rgba(255,255,255,0.1); margin-top:40px; }
+.footer .brand { font-size:22px; font-weight:900; background:linear-gradient(135deg,#FFD93D 0%,#FF6B9D 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; margin-bottom:8px; }
+.footer .tag { font-size:14px; opacity:0.6; letter-spacing:0.05em; }
+.footer .quote { font-size:18px; font-style:italic; opacity:0.9; max-width:600px; margin:24px auto 0; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+<header class="hero">
+  <div class="badge"><span class="badge-dot"></span>2026 / 05 / 17 ｜ 白袍人生學院</div>
+  <h1>81 位醫師<br>親口說的真實心得</h1>
+  <p class="sub">陳昱傑《AI時代的數位護城河》學員回饋。</p>
+  <p class="meta">FEEDBACK WALL · 100% 真實學員回饋 · FB 54 篇 · IG 10 篇 · Threads 1 篇</p>
+</header>
+<section class="stats">
+  <div class="stat-card"><div><span class="stat-number">81</span><span class="stat-unit">位</span></div><div class="stat-label">填寫回饋學員</div></div>
+  <div class="stat-card"><div><span class="stat-number">66</span><span class="stat-unit">位</span></div><div class="stat-label">公開發文分享</div></div>
+  <div class="stat-card"><div><span class="stat-number">98</span><span class="stat-unit">%</span></div><div class="stat-label">給予滿分五星</div></div>
+  <div class="stat-card"><div><span class="stat-number">4.93</span><span class="stat-unit">／5</span></div><div class="stat-label">綜合平均評分</div></div>
+</section>
+<section class="ratings">
+  <h2>⭐ 四大維度 學員評分</h2>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="rating-top"><span class="rating-label">深度與廣度</span><span class="rating-score">4.99 <span style="font-size:12px;opacity:0.6;">／5.0</span></span></div><div class="rating-bar"><div class="rating-bar-fill" style="width:99.8%"></div></div><div style="margin-top:8px;font-size:12px;opacity:0.6;">98.8% 給予滿分</div></div>
+    <div class="rating-item"><div class="rating-top"><span class="rating-label">符合預期需求</span><span class="rating-score">4.93 <span style="font-size:12px;opacity:0.6;">／5.0</span></span></div><div class="rating-bar"><div class="rating-bar-fill" style="width:98.6%"></div></div><div style="margin-top:8px;font-size:12px;opacity:0.6;">93.8% 給予滿分</div></div>
+    <div class="rating-item"><div class="rating-top"><span class="rating-label">時間安排合理</span><span class="rating-score">4.90 <span style="font-size:12px;opacity:0.6;">／5.0</span></span></div><div class="rating-bar"><div class="rating-bar-fill" style="width:98%"></div></div><div style="margin-top:8px;font-size:12px;opacity:0.6;">92.6% 給予滿分</div></div>
+    <div class="rating-item"><div class="rating-top"><span class="rating-label">場地飲食設施</span><span class="rating-score">4.88 <span style="font-size:12px;opacity:0.6;">／5.0</span></span></div><div class="rating-bar"><div class="rating-bar-fill" style="width:97.6%"></div></div><div style="margin-top:8px;font-size:12px;opacity:0.6;">90.1% 給予滿分</div></div>
+  </div>
+</section>
+<section class="wall-header">
+  <div class="wall-pill">💬 REAL VOICES · 真實見證</div>
+  <h2>學員親口說</h2>
+  <p>滑下去，看 81 位醫師、診所經營者、團隊主管，親口寫的收穫。<br>有 <strong style="color:#FFD93D;">66 位</strong>更直接在 Facebook、Instagram 公開發文——點擊「看 FB / IG 原文」立即跳轉。</p>
+  <div class="filter-bar">
+    <input type="text" id="search" placeholder="🔍 搜尋關鍵字（如：Google 商家、AIEO、網站）">
+    <button class="chip active" data-filter="all">全部 81</button>
+    <button class="chip" data-filter="link">🌟 有公開心得 66</button>
+  </div>
+</section>
+<main class="wall" id="wall">
+  <div class="card" data-name="許哲維" data-text="最重要的還是看好病人，累積經驗，google 能爬到的東西，我想很快就會被追上，真正重要的還是自己成為權威" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">最重要的還是看好病人，累積經驗，google 能爬到的東西，我想很快就會被追上，真正重要的還是自己成為權威</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">許哲維</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1CwwjguE1r/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="許哲維" data-text="網站的建置和系統化，要做的事比想像中的多很多，合併自己得專業和經驗，還是最重要的，努力看病，努力學習，努力經營" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">網站的建置和系統化，要做的事比想像中的多很多，合併自己得專業和經驗，還是最重要的，努力看病，努力學習，努力經營</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">許哲維</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="劉麗雪" data-text="1. 比較單純 Google 商家先改善
+2. 開始用「三分鐘治療小卡」去做一些 AIEO 的文章
+3. 貼在我的官網和 Google 商家，增加 AI 搜尋引用的機會
+4. 照網站的五層架構改網站" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">1. 比較單純 Google 商家先改善
+2. 開始用「三分鐘治療小卡」去做一些 AIEO 的文章
+3. 貼在我的官網和 Google 商家，增加 AI 搜尋引用的機會
+4. 照網站的五層架構改網站</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">劉麗雪</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1Cx5ZRNTDP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="趙樹儀" data-text="對於AI小白的我來說，整堂課程都是精華，我的診所連正式官網都沒有，只有普普通通的FB，Google商家也沒正經經營！應該該正視這個問題趕快重練！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">對於AI小白的我來說，整堂課程都是精華，我的診所連正式官網都沒有，只有普普通通的FB，Google商家也沒正經經營！應該該正視這個問題趕快重練！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">趙樹儀</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1BaniheYGi/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="何建輝" data-text="陳：每個AI視角中我們的網頁究竟有什麼盲點" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">陳：每個AI視角中我們的網頁究竟有什麼盲點</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">何建輝</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18NUZ2rYgV/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="林智俊" data-text="把空軍按照上課內容，做個修正" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">把空軍按照上課內容，做個修正</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">林智俊</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1HsPMBegyB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="吳靖農" data-text="過去我以為只要持續發表文章、累積臨床口碑，品牌自然就會建立。但今天才意識到，我一直在建立的是「長庚耳鼻喉科的品牌」，而不是「吳靖農的品牌」。兩者看似重疊，實則完全不同。立即想落地的第一步，是重新檢視我的 Facebook 與 Medium 內容，確認每一篇文章傳遞的是我個人的觀點與價值，而不只是機構身份的延伸。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">過去我以為只要持續發表文章、累積臨床口碑，品牌自然就會建立。但今天才意識到，我一直在建立的是「長庚耳鼻喉科的品牌」，而不是「吳靖農的品牌」。兩者看似重疊，實則完全不同。立即想落地的第一步，是重新檢視我的 Facebook 與 Medium 內容，確認每一篇文章傳遞的是我個人的觀點與價值，而不只是機構身份的延伸。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">吳靖農</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/18wKPsTjTt/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="陳君琳" data-text="以往會避諱在網站上直接寫明價格，或者是把副作用寫得太完整，主要是怕把讀者嚇跑；但似乎在 AI 搜尋推薦的年代，反而是建立信任感的方法。以往在 SEO 年代的一些 best practice，現在反而是 wrong practice，所以真的需要與時俱進。如今已經不需要關鍵字的疊加，或在 Google 商家名稱後面多做敘述，這反而會造成在不同平臺上名字的不連貫，導致 AI 信任度下降。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">以往會避諱在網站上直接寫明價格，或者是把副作用寫得太完整，主要是怕把讀者嚇跑；但似乎在 AI 搜尋推薦的年代，反而是建立信任感的方法。以往在 SEO 年代的一些 best practice，現在反而是 wrong practice，所以真的需要與時俱進。如今已經不需要關鍵字的疊加，或在 Google 商家名稱後面多做敘述，這反而會造成在不同平臺上名字的不連貫，導致 AI 信任度下降。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">陳君琳</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/v/1CyRzzteBe/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="何彥柔" data-text="原來一直以為的google商家塞關鍵字可以增加被搜尋到的機會但根本是違規操作XD 以及商家的服務欄位竟然是現在AI爬蟲的藍海區有待開發!" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">原來一直以為的google商家塞關鍵字可以增加被搜尋到的機會但根本是違規操作XD 以及商家的服務欄位竟然是現在AI爬蟲的藍海區有待開發!</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">何彥柔</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/sherry.ho.755233" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="徐苡瑄" data-text="整個官網的呈現方式以及google地標的編輯" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">整個官網的呈現方式以及google地標的編輯</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">徐苡瑄</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/xu.yi.xuan.180467/posts/pfbid02Z6AXQducryZpKBZm7sEcRQzuavPWG2d7rHYayWz3AaoYJcBFZKEnZxinmqW7usJkl" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="王仁昌" data-text="「讓 AI 專注於管理，讓人專注於領導」。AI 可以協助處理重複性工作、客服問答、數據分析與內容整理，但醫療服務最核心的溫度，仍來自醫師與團隊對病患需求的理解與關懷。所以診所經營不是追求設備、技術或短期成交，而要把線上人流與線下體驗串成完整迴圈。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">「讓 AI 專注於管理，讓人專注於領導」。AI 可以協助處理重複性工作、客服問答、數據分析與內容整理，但醫療服務最核心的溫度，仍來自醫師與團隊對病患需求的理解與關懷。所以診所經營不是追求設備、技術或短期成交，而要把線上人流與線下體驗串成完整迴圈。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">王仁昌</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1CZzg9xeHi/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="黃天佑" data-text="Google商家的內容建置和名稱設立, 有些診所特色的介紹以前覺得放在名字比較好, 現在知道要挪到哪個地方, 以及商家的營運方式不單單只有回留言" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Google商家的內容建置和名稱設立, 有些診所特色的介紹以前覺得放在名字比較好, 現在知道要挪到哪個地方, 以及商家的營運方式不單單只有回留言</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">黃天佑</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1P2qbr9o34/?mibextid=WC7FNe" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="高逢駿" data-text="可以立刻實現AIEO的繁瑣步驟非常棒, 很充實的一堂課喔" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">可以立刻實現AIEO的繁瑣步驟非常棒, 很充實的一堂課喔</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">高逢駿</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYoAERtgYJL/?utm_source=ig_web_copy_link&amp;igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李宗旻" data-text="課程點出兩大核心：首先是「AIEO與E-E-A-T」，我們必須用結構化語法降低AI的算力負擔，並在內容中寫出那10%無可取代的「臨床差異與經驗」（如困難或拒絕案例），讓AI想引用、敢引用你。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">課程點出兩大核心：首先是「AIEO與E-E-A-T」，我們必須用結構化語法降低AI的算力負擔，並在內容中寫出那10%無可取代的「臨床差異與經驗」（如困難或拒絕案例），讓AI想引用、敢引用你。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">李宗旻</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYnxKPXzrzBQBGmVYTsNWj6crc8aD-OXL4ptAo0/?igsh=MnNtdzRwM2Fqc3gy" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李嘉瑋" data-text="之前的衛教文章都照自己的感覺寫，上課後才知道文章撰寫的格式原來如此重要，接下來要花一段時間把文章都重新調整，感謝陳大大提供文章生成器，修改起來快很多" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">之前的衛教文章都照自己的感覺寫，上課後才知道文章撰寫的格式原來如此重要，接下來要花一段時間把文章都重新調整，感謝陳大大提供文章生成器，修改起來快很多</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">李嘉瑋</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1931W6bqkS/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="劉立德" data-text="七個Google 可以更改的事項 個人網站改成AIEO的形式 去做更深AIEO的探索與落地" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">七個Google 可以更改的事項 個人網站改成AIEO的形式 去做更深AIEO的探索與落地</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">劉立德</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18ouhaEK84/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="唐士杰" data-text="1. Google商家! 知道Google商家很重要，但我卻連有「服務」這個選項可以新增都不知道，還在回程的高鐵上就已經在寫服務的內容了!
+2. 官網旗艦頁，其實這就是在展現診所最強武器，這會讓我開始思考診所的發展與營運方向。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">1. Google商家! 知道Google商家很重要，但我卻連有「服務」這個選項可以新增都不知道，還在回程的高鐵上就已經在寫服務的內容了!
+2. 官網旗艦頁，其實這就是在展現診所最強武器，這會讓我開始思考診所的發展與營運方向。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">唐士杰</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/14fZdfBVc3S/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭佳益" data-text="AIEO和SEO的不同，幫 AI 省力，AI 才會推薦你，但結構好、內容不真實，反而只是把錯誤放得更大" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">AIEO和SEO的不同，幫 AI 省力，AI 才會推薦你，但結構好、內容不真實，反而只是把錯誤放得更大</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">鄭佳益</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1AiEZVS7mq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="王靖宜" data-text="我是華榮骨科診所主管、小編、雜工。5/17 去上這堂課，本來只是想說：「來看看 AI SEO 現在又變成什麼樣子了。」結果從開始到結束，我的腦子幾乎沒停過。昱傑醫師很厲害的地方，是把很多原本聽起來很遠、很抽象的東西，慢慢拆成：「診所真的做得到的事。」這堂課有種感覺很像是：原本一直在黑暗裡摸路的人，突然有人把燈打開。不是一步登天的那種捷徑，而是終於知道：下一步該往哪裡走。我的膝蓋也完全落地了😆" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">我是華榮骨科診所主管、小編、雜工。5/17 去上這堂課，本來只是想說：「來看看 AI SEO 現在又變成什麼樣子了。」結果從開始到結束，我的腦子幾乎沒停過。昱傑醫師很厲害的地方，是把很多原本聽起來很遠、很抽象的東西，慢慢拆成：「診所真的做得到的事。」這堂課有種感覺很像是：原本一直在黑暗裡摸路的人，突然有人把燈打開。不是一步登天的那種捷徑，而是終於知道：下一步該往哪裡走。我的膝蓋也完全落地了😆</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">王靖宜</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="陳聖翰" data-text="在上課之前 我其實有點疑問，如果AI搜尋的技巧 可以改變現實的權重，這是AI的目的嗎？但實際聽了之後 我理解到，這就像千萬級別的音響，不是改變本來的聲線 不是修改你的音符，而是還原你現場的樣子" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">在上課之前 我其實有點疑問，如果AI搜尋的技巧 可以改變現實的權重，這是AI的目的嗎？但實際聽了之後 我理解到，這就像千萬級別的音響，不是改變本來的聲線 不是修改你的音符，而是還原你現場的樣子</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">陳聖翰</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/19i3T8AYee/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="曾琴雁" data-text="我立刻開始改我的Google商家" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">我立刻開始改我的Google商家</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">曾琴雁</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYhi1F3GtB8/?igsh=MWdzcGZlZnAycjV4Ng==" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="楊智鈞" data-text="這堂課最能馬上落地的項目，就是改善官網與 Google 商家。過去我們常把重點放在專業內容本身，但課程讓我意識到，病人搜尋時看到的第一印象，往往就是官網標題、服務頁架構、評論呈現與 Google 商家資訊。透過 AIEO 的方法，可以更精準整理關鍵字、優化病人常問問題，讓專業更容易被搜尋、被理解，也更容易轉換成實際預約。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">這堂課最能馬上落地的項目，就是改善官網與 Google 商家。過去我們常把重點放在專業內容本身，但課程讓我意識到，病人搜尋時看到的第一印象，往往就是官網標題、服務頁架構、評論呈現與 Google 商家資訊。透過 AIEO 的方法，可以更精準整理關鍵字、優化病人常問問題，讓專業更容易被搜尋、被理解，也更容易轉換成實際預約。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">楊智鈞</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYhaeCAD4o7/" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="郭大維" data-text="善用 AI作為協助工具，無論是在醫療知識的傳遞、病人衛教或是團隊診所的管理上，都會有如虎添翼的效果。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">善用 AI作為協助工具，無論是在醫療知識的傳遞、病人衛教或是團隊診所的管理上，都會有如虎添翼的效果。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">郭大維</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/17Nj8znCFQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="陳敬智" data-text="「誠實」是YMYL最重要的一環，講出風險、費用、禁忌症等等的細節對於AISEO來說是加分的。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">「誠實」是YMYL最重要的一環，講出風險、費用、禁忌症等等的細節對於AISEO來說是加分的。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">陳敬智</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1FPTrAR2Z2/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="徐怡雯" data-text="網站調整成更能讓AI搜索到的格式" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">網站調整成更能讓AI搜索到的格式</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">徐怡雯</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="陳建行" data-text="Google商家檔案的設定，茅塞頓開，已開始陸續新增Google評論以及與病人合照的相片，接下來會編輯簡短的短影音，配上字幕放到Google商家。網站方面，已開始編輯以最主要療程呈現，並且開始修改品牌名稱，期待在AI時代，可以得到時代的紅利。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Google商家檔案的設定，茅塞頓開，已開始陸續新增Google評論以及與病人合照的相片，接下來會編輯簡短的短影音，配上字幕放到Google商家。網站方面，已開始編輯以最主要療程呈現，並且開始修改品牌名稱，期待在AI時代，可以得到時代的紅利。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">陳建行</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18eE8oxm3Q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="許妙渝" data-text="AI賦能" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">AI賦能</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">許妙渝</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/14k3WcGzmLy/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="陳奕夫" data-text="Ai的運用讓人耳目一新" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Ai的運用讓人耳目一新</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">陳奕夫</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="林俊宇" data-text="診所的網站規劃，以及google商家的編寫" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">診所的網站規劃，以及google商家的編寫</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">林俊宇</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1JqHNsRF2q/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭晴" data-text="其實整堂課最讓我震撼的，是講師「追求極致，全力以赴」的狀態。陳醫師跟張醫師讓我們親眼看見一個人願意為一件事、一個活動投入到什麼程度，認真到極致的樣子，真的會讓人感動。立即落地：1. 精修網站使更AI友善。2. 考慮地端AI agent 進入診所工作流程。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">其實整堂課最讓我震撼的，是講師「追求極致，全力以赴」的狀態。陳醫師跟張醫師讓我們親眼看見一個人願意為一件事、一個活動投入到什麼程度，認真到極致的樣子，真的會讓人感動。立即落地：1. 精修網站使更AI友善。2. 考慮地端AI agent 進入診所工作流程。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">鄭晴</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1ARFcpszsU/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="許芳偉" data-text="整個了解了Google商家的設定還有官網首頁的旗艦王牌療程設定，以及樹狀圖的網頁設計。另外就是AIEO寫文的要點可以立刻回去落地重改。最後有圖片或文字如何節省AI算力爭取AI效能也很重要" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">整個了解了Google商家的設定還有官網首頁的旗艦王牌療程設定，以及樹狀圖的網頁設計。另外就是AIEO寫文的要點可以立刻回去落地重改。最後有圖片或文字如何節省AI算力爭取AI效能也很重要</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">許芳偉</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1aNz4EuYsf/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李紹安" data-text="如何以符合AEO搜尋方式快速生成衛教文章以及如何確保在使用AI生成文章內容時避免使用錯誤文獻。另外學習到如何建構自己的網站以及如何讓網站方便AI搜尋" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">如何以符合AEO搜尋方式快速生成衛教文章以及如何確保在使用AI生成文章內容時避免使用錯誤文獻。另外學習到如何建構自己的網站以及如何讓網站方便AI搜尋</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">李紹安</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1CqJ5UDcRm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="阮維鑫" data-text="1、增加官方網站的關鍵字和DOI 連結
+2、增加google商家的服務連結
+3、影片增加youtube 的部分。" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">1、增加官方網站的關鍵字和DOI 連結
+2、增加google商家的服務連結
+3、影片增加youtube 的部分。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">阮維鑫</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="陳韋閔" data-text="漂亮的網站不一定有效，要AI好讀且有信任背書的網頁建置才是基礎。回家立馬找廠商設計網站，跟著白袍不落隊😁" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">漂亮的網站不一定有效，要AI好讀且有信任背書的網頁建置才是基礎。回家立馬找廠商設計網站，跟著白袍不落隊😁</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">陳韋閔</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1AtMXfrgWK/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="葉家瑋" data-text="關於如何寫出讓AI不用多花費算力的指令，且給予文字檔比給予圖片更能夠讓AI更快速的運算及節省AI思考的時間。並且給它正確的專業資料，它才能給出不瞎掰資訊。最想落實的部分好好建立自己的google商家及網站，讓客戶在ＡＩ搜尋的時候能第一個被ＡＩ推薦。" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">關於如何寫出讓AI不用多花費算力的指令，且給予文字檔比給予圖片更能夠讓AI更快速的運算及節省AI思考的時間。並且給它正確的專業資料，它才能給出不瞎掰資訊。最想落實的部分好好建立自己的google商家及網站，讓客戶在ＡＩ搜尋的時候能第一個被ＡＩ推薦。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">葉家瑋</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="劉宗瑋" data-text="從來沒用ai搜尋過自己的王牌療程，一搜發現自己完全沒被提到，反而對手有在上面，超級硬傷，過去的seo真的沒用了，目前立馬改掉，自己先手動整理google 商家的優化" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">從來沒用ai搜尋過自己的王牌療程，一搜發現自己完全沒被提到，反而對手有在上面，超級硬傷，過去的seo真的沒用了，目前立馬改掉，自己先手動整理google 商家的優化</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">劉宗瑋</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1H1gATzc2B/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="姚泓汎" data-text="google商家可以操作的細節都要補足，檢視網站目前踩中的雷，照著標準重新更改，配合機器人優化內容" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">google商家可以操作的細節都要補足，檢視網站目前踩中的雷，照著標準重新更改，配合機器人優化內容</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">姚泓汎</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1DDsApxmUF/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="劉宗瑋" data-text="立即由7日改變計畫開始實行，感謝昱傑手把手教學，曹醫師內容也更讓啟發，網站該如何讓實體病患停留是下一個要努力的方向" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">立即由7日改變計畫開始實行，感謝昱傑手把手教學，曹醫師內容也更讓啟發，網站該如何讓實體病患停留是下一個要努力的方向</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">劉宗瑋</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1FbiijCtbe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="彭柏盛" data-text="要讓AI搜尋很省力，才有推播效果。只用精美的圖片放上自己的學經歷，這讓AI跳過這樣的費力運算方式，最後自己的能力都等同於視而不見，馬上可以改的是把所有用圖表說明的事項盡量文字化，html表格比較好用" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">要讓AI搜尋很省力，才有推播效果。只用精美的圖片放上自己的學經歷，這讓AI跳過這樣的費力運算方式，最後自己的能力都等同於視而不見，馬上可以改的是把所有用圖表說明的事項盡量文字化，html表格比較好用</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">彭柏盛</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1Uv1JSgwC2/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="林思彤" data-text="EEAT 帶來的病患，進了診所之後 CRM 要能接住——知道他從哪來、關心什麼、上次溝通到哪。這條鏈任何一段斷掉，前面的投資都打折。下一步要認真盤點：現在的線上跟線下，到底串起來了幾成？" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">EEAT 帶來的病患，進了診所之後 CRM 要能接住——知道他從哪來、關心什麼、上次溝通到哪。這條鏈任何一段斷掉，前面的投資都打折。下一步要認真盤點：現在的線上跟線下，到底串起來了幾成？</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">林思彤</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18gY8VUAiT/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="洪學宇" data-text="AIEO想看的文章：用HTML 純文字，每段 200–350 字，有獨家臨床數據、第一手觀察。誠實揭露風險及副作用，反而在某些AI 認為較夠客觀。用病人會搜尋的主訴而非單純醫學術語或疾病寫文案。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">AIEO想看的文章：用HTML 純文字，每段 200–350 字，有獨家臨床數據、第一手觀察。誠實揭露風險及副作用，反而在某些AI 認為較夠客觀。用病人會搜尋的主訴而非單純醫學術語或疾病寫文案。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">洪學宇</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/shiueyuhung/posts/pfbid02GrZ2FpkBRLq95d2Pd4YLQUYdzYCQGoiwsdoX68FF9M6Rv8rXJccHtAgQ72owgQT8l" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="呂弘鈞" data-text="我想要改進自己建立的Google map, 另外希望能開始架設自己的網站" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">我想要改進自己建立的Google map, 另外希望能開始架設自己的網站</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">呂弘鈞</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYcpJe4ICxX/?igsh=cTh5dTh2cGI4N3gz" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="林峻豪" data-text="今日最大的盲區突破是意識到我們已進入「零點選時代」，病人不再逐一翻閱網頁，而是直接獲取 AI 整理的摘要，這代表醫療行銷的競爭核心已從「關鍵字」轉向「AIEO」與「算力經濟學」。我立即想落地的行動是將診所專頁的內容產出轉型為「語意切片」與「三明治寫作法」，確保結論先行且段落獨立自足，並在每一則臨床心得後精準標註 DOI 文獻連結與外部權威連結。透過這種結構化且具高資訊增益的佈局，能讓 AI 在耗費最少算力的情況下「想引用、敢引用」我的專業內容，真正建立起以信任為核心的數位護城河。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">今日最大的盲區突破是意識到我們已進入「零點選時代」，病人不再逐一翻閱網頁，而是直接獲取 AI 整理的摘要，這代表醫療行銷的競爭核心已從「關鍵字」轉向「AIEO」與「算力經濟學」。我立即想落地的行動是將診所專頁的內容產出轉型為「語意切片」與「三明治寫作法」，確保結論先行且段落獨立自足，並在每一則臨床心得後精準標註 DOI 文獻連結與外部權威連結。透過這種結構化且具高資訊增益的佈局，能讓 AI 在耗費最少算力的情況下「想引用、敢引用」我的專業內容，真正建立起以信任為核心的數位護城河。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">林峻豪</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/17B7MeeYXW/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="梁盛賓" data-text="應該會立即改版自己的網站 補齊所有可信度" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">應該會立即改版自己的網站 補齊所有可信度</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">梁盛賓</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1GsnqfJqX5/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="林國偉" data-text="這次課程讓我重新思考品牌與健康服務的連結，未來希望優化網站體驗、導入AI人才機器人系統，並將實體病人的真實回饋有效轉化為線上行銷內容，提升信任與品牌價值。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">這次課程讓我重新思考品牌與健康服務的連結，未來希望優化網站體驗、導入AI人才機器人系統，並將實體病人的真實回饋有效轉化為線上行銷內容，提升信任與品牌價值。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">林國偉</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1Heu2S7Bpe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="陳韻筑" data-text="以往大家都會怕衛生局審核，不敢在網頁上揭露療程費用，但這其實是客戶端與Ai在意的。原來H1 H2 H3太亂，也會影響Ai的推薦度。持續累積自己的專業與權威非常必要，特別是有學會的各種認證推薦。想要趕快開始架設網站！整理案例了！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">以往大家都會怕衛生局審核，不敢在網頁上揭露療程費用，但這其實是客戶端與Ai在意的。原來H1 H2 H3太亂，也會影響Ai的推薦度。持續累積自己的專業與權威非常必要，特別是有學會的各種認證推薦。想要趕快開始架設網站！整理案例了！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">陳韻筑</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18ii8UfcUe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="王靖宇" data-text="會先成立個人品牌，以及個人網站！目前還在醫院服務。希望可以將個人的專長與專業讓更多人觸及。這次AIEO受惠良多。 AI agent的時代會開始慢慢普及😍" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">會先成立個人品牌，以及個人網站！目前還在醫院服務。希望可以將個人的專長與專業讓更多人觸及。這次AIEO受惠良多。 AI agent的時代會開始慢慢普及😍</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">王靖宇</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1EsP71dGAX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李宜靜" data-text="做一支自己的寫文機器人，融入今天教的內容架構" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">做一支自己的寫文機器人，融入今天教的內容架構</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">李宜靜</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/19vVoCa64t/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="吳政庭" data-text="上完的想法，加強王牌商品，打針注射後然搭配精油止痛、營養調理。此外我覺得還是要多點權威認證（花錢考試）。還能做的就是繼續利用陸海空作戰把量做大+把客人轉回我的網站貢獻上" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">上完的想法，加強王牌商品，打針注射後然搭配精油止痛、營養調理。此外我覺得還是要多點權威認證（花錢考試）。還能做的就是繼續利用陸海空作戰把量做大+把客人轉回我的網站貢獻上</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">吳政庭</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1KTyhukUhB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭歆幼" data-text="Google Maps本來就有所涉獵，但在經過這次的會議之後優化的方向更加明確，謝謝各位醫師無私的分享，也會運用這些秘笈，接下來跟廠商進行後續的討論" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Google Maps本來就有所涉獵，但在經過這次的會議之後優化的方向更加明確，謝謝各位醫師無私的分享，也會運用這些秘笈，接下來跟廠商進行後續的討論</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">鄭歆幼</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/17RL3H9nUA/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭偉宏" data-text="許多以前直覺上認為會增加推薦度的因素，其實反而會掉分！迫切想要改善診所的網站，讓它符合AI的架構，同時邏輯、層次和版面都優化！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">許多以前直覺上認為會增加推薦度的因素，其實反而會掉分！迫切想要改善診所的網站，讓它符合AI的架構，同時邏輯、層次和版面都優化！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">鄭偉宏</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/18oSHa26pf/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="蔡欣芛" data-text="想要立即修改好Google map的資訊
+完成官網的Schema設定
+完整主題頁面的文獻引用DOI
+很多可以做的事
+發現還有很多可以進步的地方" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">想要立即修改好Google map的資訊
+完成官網的Schema設定
+完整主題頁面的文獻引用DOI
+很多可以做的事
+發現還有很多可以進步的地方</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">蔡欣芛</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.threads.com/@kristy_1_7/post/DYcU-8zlOzn" target="_blank" rel="noopener noreferrer" class="link-btn">🧵 看 Threads 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="金倫羽" data-text="立即想落地實現的就是可以三方都贏：白袍、醫師與永悅；流量串連、內容多元、合作聯盟壯大。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">立即想落地實現的就是可以三方都贏：白袍、醫師與永悅；流量串連、內容多元、合作聯盟壯大。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">金倫羽</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1BQmrxpmCj/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="許逸忠" data-text="網站立即改版aieo- friendly" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">網站立即改版aieo- friendly</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">許逸忠</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1EVSBDEwyt/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="胡怡萱" data-text="1. 利用AIEO文章生成器，開始製作自己的專業文章
+2. 把之前拍攝的衛教影片陸續上傳到youtube
+3. 新增有可信度的外部連結
+4. 鼓勵我們診所其他醫師一起來寫文章" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">1. 利用AIEO文章生成器，開始製作自己的專業文章
+2. 把之前拍攝的衛教影片陸續上傳到youtube
+3. 新增有可信度的外部連結
+4. 鼓勵我們診所其他醫師一起來寫文章</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">胡怡萱</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/skindrhu/posts/1594667529328887" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="龔聖淳" data-text="最意外的是AI搜尋邏輯是用自然語言、跟以前SEO用關鍵字搜索完全不同，這樣網站設計有必要調整。務必希望別人用AI搜尋到我能得到正確資訊，免費AI可能會提供我的錯誤資訊或甚至搜尋不到我這點真的很慘，絕對要避免。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">最意外的是AI搜尋邏輯是用自然語言、跟以前SEO用關鍵字搜索完全不同，這樣網站設計有必要調整。務必希望別人用AI搜尋到我能得到正確資訊，免費AI可能會提供我的錯誤資訊或甚至搜尋不到我這點真的很慘，絕對要避免。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">龔聖淳</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1ATQo6SJcB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="陳克濱" data-text="給我的啟發是未來網站更像是：「AI 的知識資料庫」。誰能更有效率地讓 AI 理解，誰就更有機會被推薦。這也讓我再次看到：營運的本質，其實一直都不是追流量而已。而是：如何建立長期信任、如何降低理解成本、如何讓好的內容被真正看見。AI 不會取代專業，但會重新分配「誰被看見」。而這場改變，其實已經開始了。" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">給我的啟發是未來網站更像是：「AI 的知識資料庫」。誰能更有效率地讓 AI 理解，誰就更有機會被推薦。這也讓我再次看到：營運的本質，其實一直都不是追流量而已。而是：如何建立長期信任、如何降低理解成本、如何讓好的內容被真正看見。AI 不會取代專業，但會重新分配「誰被看見」。而這場改變，其實已經開始了。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">陳克濱</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭偉宏" data-text="需要親自操作的課程，所以學習之後需要回家多練習啊！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">需要親自操作的課程，所以學習之後需要回家多練習啊！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">鄭偉宏</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1BKc33NUjV/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="沈煜庭" data-text="過往的seo模式在現今的AIEO裡甚至是會被降權的存在，還有曹醫師的AI櫃檯系統太未來太震撼" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">過往的seo模式在現今的AIEO裡甚至是會被降權的存在，還有曹醫師的AI櫃檯系統太未來太震撼</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">沈煜庭</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1DovFLcGJy/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李宜靜" data-text="製作自己的ai寫文陪跑教練" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">製作自己的ai寫文陪跑教練</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">李宜靜</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/19vVoCa64t/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="徐庸" data-text="今日課程後，最打破我盲區的是：AI 時代醫師不能只是埋頭把臨床做好，還要讓自己的專業內容被 AI 看得懂、驗證得到、願意推薦。接下來想立即落地的是，重新整理個人與共同官網架構，把疼痛治療、影像診斷、sTAME、增生療法等內容做成更清楚的衛教文章、FAQ、案例與風險說明，讓病人和 AI 都能更容易理解我們的專業。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">今日課程後，最打破我盲區的是：AI 時代醫師不能只是埋頭把臨床做好，還要讓自己的專業內容被 AI 看得懂、驗證得到、願意推薦。接下來想立即落地的是，重新整理個人與共同官網架構，把疼痛治療、影像診斷、sTAME、增生療法等內容做成更清楚的衛教文章、FAQ、案例與風險說明，讓病人和 AI 都能更容易理解我們的專業。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">徐庸</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/p/1B9X9hxamx/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭宇庭" data-text="了解網站的整體架構、如何優化、如何規劃相關內容、如何落地。知道了非常多有啟發的事情，已經開始請網站工程師著手修訂！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">了解網站的整體架構、如何優化、如何規劃相關內容、如何落地。知道了非常多有啟發的事情，已經開始請網站工程師著手修訂！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">鄭宇庭</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYb_8g2CTNr/?igsh=MXRqOTRpemgwNnhpOQ==" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="蕭家杰" data-text="個人網站需要更積極更新與維護" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">個人網站需要更積極更新與維護</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">蕭家杰</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYb65yEj-Dl/?igsh=azN2a2E5NmE4Mmoz" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李俊廷" data-text="一整天下來，最大的收穫並不只是學習新工具，而是重新思考：在 AI 快速爆發的時代，我們該如何善用科技，讓真正正確、專業的醫療知識，更容易被民眾看見與理解。今天的課程安排非常精彩，四位講者從「典範、內容、系統、實體」四個面向，完整描繪了 AI 在醫療領域中的應用可能。首先是陳昱傑醫師，將 AIEO 的底層邏輯拆解得非常清楚。接著，林建佑醫師分享了許多內容設計與實戰經驗。在系統面，LuLu 提供了很多非常實用的 AI 應用方式。最後，曹皓崴醫師則透過牙醫診所的實際案例，把 AI 如何串接整體患者流程這件事完整落地。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">一整天下來，最大的收穫並不只是學習新工具，而是重新思考：在 AI 快速爆發的時代，我們該如何善用科技，讓真正正確、專業的醫療知識，更容易被民眾看見與理解。今天的課程安排非常精彩，四位講者從「典範、內容、系統、實體」四個面向，完整描繪了 AI 在醫療領域中的應用可能。首先是陳昱傑醫師，將 AIEO 的底層邏輯拆解得非常清楚。接著，林建佑醫師分享了許多內容設計與實戰經驗。在系統面，LuLu 提供了很多非常實用的 AI 應用方式。最後，曹皓崴醫師則透過牙醫診所的實際案例，把 AI 如何串接整體患者流程這件事完整落地。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">李俊廷</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/r/18b7FbovrU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="孫克嘉" data-text="立刻優化網站及所上傳之內容" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">立刻優化網站及所上傳之內容</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">孫克嘉</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="吳琇璇" data-text="確認網站要符合gemini chatgpt claude perplexity grok的AIEO搜尋偏好。網站有哪些Schema 部署會更符合aieo搜尋。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#F093FB 0%,#F5576C 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">確認網站要符合gemini chatgpt claude perplexity grok的AIEO搜尋偏好。網站有哪些Schema 部署會更符合aieo搜尋。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#F093FB"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#F093FB"/></svg></div>
+        <div><div class="author-name">吳琇璇</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1BDZveccgD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="林怡慧" data-text="Goggle商家介紹很重要，官網健檢機器人，衛教文章生成機器人。要有衛福部及orcid輔助認證。內容非常豐富，回家好好複習，期待6/17😃" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#4FACFE 0%,#00F2FE 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Goggle商家介紹很重要，官網健檢機器人，衛教文章生成機器人。要有衛福部及orcid輔助認證。內容非常豐富，回家好好複習，期待6/17😃</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#4FACFE"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#4FACFE"/></svg></div>
+        <div><div class="author-name">林怡慧</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/aaran7890/p/DYbyazGD8k5/" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="呂淯總" data-text="立刻開始從自己的Google商家開始把檔案補齊，然後看找相關的中醫還有醫療院所的官網，然後看看是否跟著做改變" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">立刻開始從自己的Google商家開始把檔案補齊，然後看找相關的中醫還有醫療院所的官網，然後看看是否跟著做改變</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+        <div><div class="author-name">呂淯總</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.instagram.com/p/DYbiTPmSmKI/?igsh=MTgwMjhoY2diM3RycQ==" target="_blank" rel="noopener noreferrer" class="link-btn">📸 看 IG 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="鳳潔菲" data-text="網站的優化加強。講義非常的實用！ai 機器人分析網站，提供非常實用的建議來改善網站" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#30CFD0 0%,#330867 100%);">
+      
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">網站的優化加強。講義非常的實用！ai 機器人分析網站，提供非常實用的建議來改善網站</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#30CFD0"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#30CFD0"/></svg></div>
+        <div><div class="author-name">鳳潔菲</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="林頌凱" data-text="Al 可以幫我們升級，飛躍升級！非常感謝豪哥、感謝白袍！" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF512F 0%,#F09819 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Al 可以幫我們升級，飛躍升級！非常感謝豪哥、感謝白袍！</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF512F"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF512F"/></svg></div>
+        <div><div class="author-name">林頌凱</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/lin.song.kai.486376/posts/pfbid029fbSoL84fCSs9aATuXiUnSnV7jhoTL96eYSpXkZ7oRXgHDoRWPbhepmusVn6nCvhl" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="李嘉瑋" data-text="陳醫師的課程和講義，真的是可以出書了，身為他的大學同窗，我知道他花了超多心血準備課程，CP值遠遠不如他去上診能得到的，我覺得他很無私，相當感動。網站我都是自己架的，所以他的內容真的都是上上之選" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+      
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">陳醫師的課程和講義，真的是可以出書了，身為他的大學同窗，我知道他花了超多心血準備課程，CP值遠遠不如他去上診能得到的，我覺得他很無私，相當感動。網站我都是自己架的，所以他的內容真的都是上上之選</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+        <div><div class="author-name">李嘉瑋</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="張智雅" data-text="今天參與「白袍人生學院」的交流與學習。在白色巨塔裡，我們常習慣全力衝刺，專注照顧病人、精進專業；但其實，人生不只是一條單一路徑。透過與不同領域的人交流，重新思考：除了成為更好的醫師，也成為更完整的人。學習不只是知識，更是視野、選擇，以及對未來人生的規劃能力。當醫療結合多元學習，人生的可能性，真的會被打開。「專業，能讓我們站穩；視野，才能帶我們走得更遠。」" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+      
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">今天參與「白袍人生學院」的交流與學習。在白色巨塔裡，我們常習慣全力衝刺，專注照顧病人、精進專業；但其實，人生不只是一條單一路徑。透過與不同領域的人交流，重新思考：除了成為更好的醫師，也成為更完整的人。學習不只是知識，更是視野、選擇，以及對未來人生的規劃能力。當醫療結合多元學習，人生的可能性，真的會被打開。「專業，能讓我們站穩；視野，才能帶我們走得更遠。」</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+        <div><div class="author-name">張智雅</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="陳炳曄" data-text="Google商家開很久了，我都愛理不理，我要努力" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FF6B9D 0%,#C06EFF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFD93D;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">Google商家開很久了，我都愛理不理，我要努力</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FF6B9D"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF6B9D"/></svg></div>
+        <div><div class="author-name">陳炳曄</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/18P1S53Lc4/" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="洪靜瑜" data-text="親身見證" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+      
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">親身見證</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+        <div><div class="author-name">洪靜瑜</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="陳盈芳" data-text="清楚了解SEO和AIEO的差異。也了解現在AI底下的底層邏輯。感謝陳醫師無私的分享。另外Google商家如何有效讓AI認證和推薦講的非常詳盡。製作的機器人非常實用，謝謝講師。" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#FFB347 0%,#FF5E62 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#fff;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">清楚了解SEO和AIEO的差異。也了解現在AI底下的底層邏輯。感謝陳醫師無私的分享。另外Google商家如何有效讓AI認證和推薦講的非常詳盡。製作的機器人非常實用，謝謝講師。</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#FFB347"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FFB347"/></svg></div>
+        <div><div class="author-name">陳盈芳</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/1AkRZSynwj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-name="何建輝" data-text="終於看懂那些AISEO的專有名詞" data-haslink="false">
+    <div class="card-inner" style="background:linear-gradient(135deg,#11998E 0%,#38EF7D 100%);">
+      
+      <div class="stars" style="color:#7F00FF;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">終於看懂那些AISEO的專有名詞</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#11998E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#11998E"/></svg></div>
+        <div><div class="author-name">何建輝</div><div class="author-label">學員回饋</div></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card" data-name="鄭歆幼" data-text="謝謝主辦單位的安排，早上陳醫師的AI婦產科課程就非常的紮實，本來就有在觀察Google Maps優化，這次透過陳醫師經驗值，非常完整，可以有效協助我們的Google優化架構，太棒了" data-haslink="true">
+    <div class="card-inner" style="background:linear-gradient(135deg,#7F00FF 0%,#E100FF 100%);">
+      <div class="post-badge">🌟 公開心得</div>
+      <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <div class="text">謝謝主辦單位的安排，早上陳醫師的AI婦產科課程就非常的紮實，本來就有在觀察Google Maps優化，這次透過陳醫師經驗值，非常完整，可以有效協助我們的Google優化架構，太棒了</div>
+      <div class="author">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="#7F00FF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#7F00FF"/></svg></div>
+        <div><div class="author-name">鄭歆幼</div><div class="author-label">學員回饋</div></div>
+      </div>
+      <div class="links"><a href="https://www.facebook.com/share/14WNx1pneim/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="link-btn">📘 看 FB 原文 →</a></div>
+    </div>
+  </div>
+    <div class="card" data-name="陳建行" data-text="Google商家檔案填寫，茅塞頓開。以立刻請工程師進入網站後台修改網域名稱，並且開始設計最重要的療程作為網站主題，其實主要是模仿玉昱傑醫師的網站進行修改" data-haslink="false">
+      <div class="card-inner" style="background:linear-gradient(135deg,#43E5F4 0%,#3D5AFE 100%);">
+        
+        <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="text">Google商家檔案填寫，茅塞頓開。以立刻請工程師進入網站後台修改網域名稱，並且開始設計最重要的療程作為網站主題，其實主要是模仿玉昱傑醫師的網站進行修改</div>
+        <div class="author">
+          <div class="avatar"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" fill="#43E5F4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#43E5F4"/></svg></div>
+          <div class="author-info">
+            <div class="author-name">陳建行</div>
+            <div class="author-label">學員回饋</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card" data-name="陳韋閔" data-text="漂亮的網站不一定有效，建立好AI容易閱讀的網站才是基礎，回家馬上就找廠商建造網站，後續跟著陳昱傑醫師的7日作業每天跟跑，希望不要落隊😁" data-haslink="false">
+      <div class="card-inner" style="background:linear-gradient(135deg,#FA709A 0%,#FEE140 100%);">
+        
+        <div class="stars" style="color:#FFFFFF;">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="text">漂亮的網站不一定有效，建立好AI容易閱讀的網站才是基礎，回家馬上就找廠商建造網站，後續跟著陳昱傑醫師的7日作業每天跟跑，希望不要落隊😁</div>
+        <div class="author">
+          <div class="avatar"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" fill="#FA709A"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FA709A"/></svg></div>
+          <div class="author-info">
+            <div class="author-name">陳韋閔</div>
+            <div class="author-label">學員回饋</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card" data-name="姚泓汎" data-text="google商家竟然有這麼多細節可以操作，網站以前也都是以自己的想法去亂搞，沒想到踩了如此多的雷。" data-haslink="false">
+      <div class="card-inner" style="background:linear-gradient(135deg,#5EE7DF 0%,#B490CA 100%);">
+        
+        <div class="stars" style="color:#FFEB3B;">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="text">google商家竟然有這麼多細節可以操作，網站以前也都是以自己的想法去亂搞，沒想到踩了如此多的雷。</div>
+        <div class="author">
+          <div class="avatar"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" fill="#5EE7DF"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#5EE7DF"/></svg></div>
+          <div class="author-info">
+            <div class="author-name">姚泓汎</div>
+            <div class="author-label">學員回饋</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="card" data-name="鄭偉宏" data-text="許多以前直覺上認為會增加推薦度的因素，其實反而會掉分！迫切想要改善診所的網站，讓它符合AI的架構，同時邏輯、層次和版面都優化！" data-haslink="false">
+      <div class="card-inner" style="background:linear-gradient(135deg,#FF9A9E 0%,#FAD0C4 100%);">
+        
+        <div class="stars" style="color:#7F00FF;">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="text">許多以前直覺上認為會增加推薦度的因素，其實反而會掉分！迫切想要改善診所的網站，讓它符合AI的架構，同時邏輯、層次和版面都優化！</div>
+        <div class="author">
+          <div class="avatar"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" fill="#FF9A9E"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#FF9A9E"/></svg></div>
+          <div class="author-info">
+            <div class="author-name">鄭偉宏</div>
+            <div class="author-label">學員回饋</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+</main>
+<footer class="footer">
+  <div class="brand">白袍人生學院 ｜ White Coat Life Academy</div>
+  <div class="tag">一群人一起打拼，走得更遠</div>
+  <p class="quote">"未來的醫師，不只是臨床專家——而是醫療 × 商業 × 影響力的整合型人才。"</p>
+  <p style="margin-top:24px;font-size:12px;opacity:0.4;">© 2026 白袍人生學院 ｜ 5/17 AI 實戰課後問卷見證牆</p>
+</footer>
+<script>
+const input = document.getElementById('search');
+const cards = document.querySelectorAll('.card');
+const chips = document.querySelectorAll('.chip');
+let currentFilter = 'all';
+function applyFilter() {
+  const q = input.value.toLowerCase().trim();
+  cards.forEach(c => {
+    const name = (c.dataset.name||'').toLowerCase();
+    const text = (c.dataset.text||'').toLowerCase();
+    const hasLink = c.dataset.haslink === 'true';
+    const matchSearch = !q || name.includes(q) || text.includes(q);
+    const matchFilter = currentFilter === 'all' || (currentFilter === 'link' && hasLink);
+    c.style.display = (matchSearch && matchFilter) ? '' : 'none';
+  });
+}
+input.addEventListener('input', applyFilter);
+document.querySelectorAll('.card').forEach(card => {
+  const firstLink = card.querySelector('.link-btn');
+  if (firstLink) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', e => {
+      if (e.target.closest('.link-btn')) return;
+      window.open(firstLink.href, '_blank', 'noopener,noreferrer');
+    });
+  }
+});
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    applyFilter();
+  });
+});
+</script>
+</body>
+</html>
