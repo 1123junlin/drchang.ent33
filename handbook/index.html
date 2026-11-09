@@ -102,14 +102,24 @@ nav button:disabled{opacity:.4;cursor:default}
   var sndBtn=document.getElementById('snd');
   function setBtn(){ sndBtn.textContent=soundOn?'聲音：開':'聲音：關'; sndBtn.setAttribute('aria-pressed',String(soundOn)); }
   setBtn();
+  // iOS: let page sounds play even when the ring/silent switch is on silent (Safari 17+)
+  try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+  // Phone speakers reproduce this soft, low "swish" much more quietly, so give touch devices more level
+  var touch=window.matchMedia && matchMedia('(pointer:coarse)').matches;
+  var LEVEL=touch?0.16:0.05;
   function unlock(){
     if(!ac){ try{ ac=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; } }
-    if(ac.state==='suspended') ac.resume();
+    if(ac.state!=='running'){ try{ ac.resume(); }catch(e){} }
+    // play one silent sample inside the gesture: required by iOS Safari to unlock audio
+    try{ var b=ac.createBuffer(1,1,22050), s=ac.createBufferSource(); s.buffer=b; s.connect(ac.destination); s.start(0); }catch(e){}
   }
-  ['pointerdown','keydown','touchstart'].forEach(function(t){ document.addEventListener(t,unlock,{passive:true}); });
+  ['touchend','click','keydown','pointerup'].forEach(function(t){ document.addEventListener(t,unlock,{capture:true,passive:true}); });
   function swish(){
-    if(!soundOn||!ac||ac.state!=='running') return;
-    var t=ac.currentTime, dur=0.42;
+    if(!soundOn||!ac) return;
+    if(ac.state!=='running'){ ac.resume().then(play,function(){}); } else play();
+  }
+  function play(){
+    var t=ac.currentTime+0.01, dur=0.42;
     var buf=ac.createBuffer(1,Math.floor(ac.sampleRate*dur),ac.sampleRate), d=buf.getChannelData(0);
     for(var i=0;i<d.length;i++){ d[i]=(Math.random()*2-1)*(0.6+0.4*Math.random()); }
     var src=ac.createBufferSource(); src.buffer=buf;
@@ -117,9 +127,10 @@ nav button:disabled{opacity:.4;cursor:default}
     bp.frequency.setValueAtTime(450,t); bp.frequency.exponentialRampToValueAtTime(1300,t+dur*0.55); bp.frequency.exponentialRampToValueAtTime(650,t+dur);
     var hp=ac.createBiquadFilter(); hp.type='lowpass'; hp.frequency.value=1600;
     var g=ac.createGain(); g.gain.setValueAtTime(0.0001,t);
-    g.gain.exponentialRampToValueAtTime(0.05,t+0.15); g.gain.exponentialRampToValueAtTime(0.02,t+0.3); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    g.gain.exponentialRampToValueAtTime(LEVEL,t+0.15); g.gain.exponentialRampToValueAtTime(LEVEL*0.4,t+0.3); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
     src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(ac.destination);
     src.start(t); src.stop(t+dur);
+    window.__swishCount=(window.__swishCount||0)+1;
   }
   flip.on('changeState',function(e){ if(e.data==='flipping') swish(); });
   sndBtn.onclick=function(){ soundOn=!soundOn; setBtn(); try{ localStorage.setItem('flipSound',soundOn?'on':'off'); }catch(e){} };
