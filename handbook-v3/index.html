@@ -25,6 +25,9 @@ header span{font-family:var(--latin);font-size:12px;color:var(--muted);letter-sp
 .wrap{width:min(100%,calc((100dvh - 190px) * 1.4106));margin:0 auto}
 #book{box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .pg{background:#FBF9F3;overflow:hidden}
+.pg{position:relative}
+.hot{position:absolute;display:block;border-radius:4px;z-index:2}
+.hot:hover,.hot:focus-visible{background:rgba(224,162,53,.16);outline:2px solid #E0A235;outline-offset:0}
 .pg img{display:block;width:100%;height:100%;object-fit:fill;-webkit-user-drag:none;user-select:none}
 @media (max-width:520px){.wrap{width:min(100%,calc((100dvh - 150px) * .7053))}}
 .load{color:var(--muted);font-size:13px}
@@ -53,7 +56,7 @@ nav button:disabled{opacity:.4;cursor:default}
 <nav aria-label="翻頁">
   <button id="first" type="button" aria-label="第一頁">⇤</button>
   <button id="prev" type="button" aria-label="上一頁">‹ 上一頁</button>
-  <div class="count" aria-live="polite"><b id="cur">1</b> / <span id="tot">14</span></div>
+  <div class="count" aria-live="polite"><b id="cur">1</b> / <span id="tot">16</span></div>
   <button id="next" type="button" aria-label="下一頁">下一頁 ›</button>
   <button id="last" type="button" aria-label="最後一頁">⇥</button>
   <button id="snd" type="button" aria-pressed="true">聲音：開</button>
@@ -67,17 +70,29 @@ nav button:disabled{opacity:.4;cursor:default}
   <button type="button" data-p="9">活動與怎麼開始</button>
   <button type="button" data-p="11">相處的默契</button>
   <button type="button" data-p="13">白院常用語</button>
+  <button type="button" data-p="15">創辦人與聯絡方式</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 <script>
 (function(){
-  var N=14, imgs=[];
+  var N=16, imgs=[];
   for(var i=1;i<=N;i++) imgs.push('pages/p'+(i<10?'0':'')+i+'.jpg');
+  // clickable areas on page images (page number -> boxes in % of the page)
+  var LINKS={15:[
+    {href:'https://drhao33.com/',label:'創辦人介紹 drhao33.com',x:11.41,y:53.83,w:76.65,h:4.79},
+    {href:'https://course.ent33ent.com/',label:'白院官網 course.ent33ent.com',x:11.41,y:58.62,w:76.65,h:4.79},
+    {href:'https://lin.ee/0TZvAZH',label:'官方 LINE',x:11.41,y:63.4,w:76.65,h:4.79},
+    {href:'mailto:drchang.ent33@gmail.com',label:'聯絡信箱 drchang.ent33@gmail.com',x:11.41,y:68.19,w:76.65,h:4.91}
+  ]};
   var el=document.getElementById('book'); el.innerHTML='';
   imgs.forEach(function(src,k){ var d=document.createElement('div'); d.className='pg';
     var im=document.createElement('img'); im.src=src; im.alt='第 '+(k+1)+' 頁'; im.decoding='async'; if(k>3) im.loading='lazy';
-    d.appendChild(im); el.appendChild(d); });
+    d.appendChild(im);
+    (LINKS[k+1]||[]).forEach(function(L){ var a=document.createElement('a'); a.className='hot'; a.href=L.href; a.setAttribute('aria-label',L.label);
+      if(L.href.indexOf('http')===0){ a.target='_blank'; a.rel='noopener'; }
+      a.style.left=L.x+'%'; a.style.top=L.y+'%'; a.style.width=L.w+'%'; a.style.height=L.h+'%'; d.appendChild(a); });
+    el.appendChild(d); });
   var flip=new St.PageFlip(el,{
     width:560,height:794,size:'stretch',minWidth:200,maxWidth:1120,minHeight:340,maxHeight:1588,
     showCover:false,usePortrait:true,maxShadowOpacity:.4,mobileScrollSupport:true,autoSize:true,flippingTime:700
