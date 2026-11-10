@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>白院文化手冊｜給新夥伴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Montserrat:wght@500;600&display=swap">
+<style>
+/* Layout: a book on a deep-ink stage, toolbar below; one page at phone width */
+:root{
+  --stage:#0E2A45; --bar:#1A3D63; --ink:#FBF9F3; --muted:rgba(251,249,243,.72);
+  --gold:#E0A235; --line:rgba(251,249,243,.18);
+  --sans:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  --latin:Montserrat,'Noto Sans TC',sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%;margin:0}
+body{background:var(--stage);color:var(--ink);font-family:var(--sans);display:flex;flex-direction:column;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));box-sizing:border-box}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:14px 8px}
+header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:.08em}
+header span{font-family:var(--latin);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding-block:8px}
+.wrap{width:min(100%,calc((100dvh - 190px) * 1.4106));margin:0 auto}
+#book{box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.pg{background:#FBF9F3;overflow:hidden}
+.pg img{display:block;width:100%;height:100%;object-fit:fill;-webkit-user-drag:none;user-select:none}
+@media (max-width:520px){.wrap{width:min(100%,calc((100dvh - 150px) * .7053))}}
+.load{color:var(--muted);font-size:13px}
+nav{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;padding-block:10px 16px}
+nav button{font:inherit;font-size:13px;color:var(--ink);background:var(--bar);border:1px solid var(--line);border-radius:6px;
+  min-width:44px;height:40px;padding:0 12px;cursor:pointer}
+nav button:hover{border-color:var(--gold)}
+nav button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+nav button:disabled{opacity:.4;cursor:default}
+.count{font-family:var(--latin);font-variant-numeric:tabular-nums;font-size:13px;min-width:92px;text-align:center;color:var(--muted)}
+.count b{color:var(--gold);font-weight:600}
+.toc{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding-bottom:14px}
+.toc button{font:inherit;font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.toc button:hover,.toc button:focus-visible{color:var(--ink);border-color:var(--gold);outline:none}
+@media (max-width:640px){header span{display:none}.toc{display:none}}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h1>白袍人生學院 文化手冊｜給新夥伴</h1>
+  <span>The Culture Handbook of White Coat Life Academy</span>
+</header>
+<div class="stage"><div class="wrap"><div id="book"><p class="load">載入中…</p></div></div></div>
+<nav aria-label="翻頁">
+  <button id="first" type="button" aria-label="第一頁">⇤</button>
+  <button id="prev" type="button" aria-label="上一頁">‹ 上一頁</button>
+  <div class="count" aria-live="polite"><b id="cur">1</b> / <span id="tot">14</span></div>
+  <button id="next" type="button" aria-label="下一頁">下一頁 ›</button>
+  <button id="last" type="button" aria-label="最後一頁">⇥</button>
+  <button id="snd" type="button" aria-pressed="true">聲音：開</button>
+  <button id="fs" type="button">全螢幕</button>
+</nav>
+<div class="toc" aria-label="章節">
+  <button type="button" data-p="1">歡迎加入</button>
+  <button type="button" data-p="3">白院為什麼存在</button>
+  <button type="button" data-p="5">白院是什麼</button>
+  <button type="button" data-p="7">走過的路</button>
+  <button type="button" data-p="9">活動與怎麼開始</button>
+  <button type="button" data-p="11">相處的默契</button>
+  <button type="button" data-p="13">白院常用語</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+(function(){
+  var N=14, imgs=[];
+  for(var i=1;i<=N;i++) imgs.push('pages/p'+(i<10?'0':'')+i+'.jpg');
+  var el=document.getElementById('book'); el.innerHTML='';
+  imgs.forEach(function(src,k){ var d=document.createElement('div'); d.className='pg';
+    var im=document.createElement('img'); im.src=src; im.alt='第 '+(k+1)+' 頁'; im.decoding='async'; if(k>3) im.loading='lazy';
+    d.appendChild(im); el.appendChild(d); });
+  var flip=new St.PageFlip(el,{
+    width:560,height:794,size:'stretch',minWidth:200,maxWidth:1120,minHeight:340,maxHeight:1588,
+    showCover:false,usePortrait:true,maxShadowOpacity:.4,mobileScrollSupport:true,autoSize:true,flippingTime:700
+  });
+  flip.loadFromHTML(el.querySelectorAll('.pg'));
+  var cur=document.getElementById('cur'), tot=document.getElementById('tot');
+  tot.textContent=N;
+  function upd(){
+    var i=flip.getCurrentPageIndex();
+    var portrait=flip.getOrientation()==='portrait';
+    cur.textContent=portrait? (i+1) : (i+1)+'–'+Math.min(i+2,N);
+    document.getElementById('prev').disabled=document.getElementById('first').disabled=(i===0);
+    document.getElementById('next').disabled=document.getElementById('last').disabled=(i>=N-(portrait?1:2));
+    try{history.replaceState(null,'','#p'+(i+1));}catch(e){}
+  }
+  flip.on('flip',upd); flip.on('changeOrientation',upd);
+
+  // Page-turn sound: a short filtered noise "swish", generated in the browser
+  var ac=null, soundOn=true;
+  try{ soundOn = localStorage.getItem('flipSound')!=='off'; }catch(e){}
+  var sndBtn=document.getElementById('snd');
+  function setBtn(){ sndBtn.textContent=soundOn?'聲音：開':'聲音：關'; sndBtn.setAttribute('aria-pressed',String(soundOn)); }
+  setBtn();
+  // iOS: let page sounds play even when the ring/silent switch is on silent (Safari 17+)
+  try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+  // Phone speakers reproduce this soft, low "swish" much more quietly, so give touch devices more level
+  var touch=window.matchMedia && matchMedia('(pointer:coarse)').matches;
+  var LEVEL=touch?0.16:0.05;
+  function unlock(){
+    if(!ac){ try{ ac=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; } }
+    if(ac.state!=='running'){ try{ ac.resume(); }catch(e){} }
+    // play one silent sample inside the gesture: required by iOS Safari to unlock audio
+    try{ var b=ac.createBuffer(1,1,22050), s=ac.createBufferSource(); s.buffer=b; s.connect(ac.destination); s.start(0); }catch(e){}
+  }
+  ['touchend','click','keydown','pointerup'].forEach(function(t){ document.addEventListener(t,unlock,{capture:true,passive:true}); });
+  function swish(){
+    if(!soundOn||!ac) return;
+    if(ac.state!=='running'){ ac.resume().then(play,function(){}); } else play();
+  }
+  function play(){
+    var t=ac.currentTime+0.01, dur=0.42;
+    var buf=ac.createBuffer(1,Math.floor(ac.sampleRate*dur),ac.sampleRate), d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++){ d[i]=(Math.random()*2-1)*(0.6+0.4*Math.random()); }
+    var src=ac.createBufferSource(); src.buffer=buf;
+    var bp=ac.createBiquadFilter(); bp.type='bandpass'; bp.Q.value=0.45;
+    bp.frequency.setValueAtTime(450,t); bp.frequency.exponentialRampToValueAtTime(1300,t+dur*0.55); bp.frequency.exponentialRampToValueAtTime(650,t+dur);
+    var hp=ac.createBiquadFilter(); hp.type='lowpass'; hp.frequency.value=1600;
+    var g=ac.createGain(); g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(LEVEL,t+0.15); g.gain.exponentialRampToValueAtTime(LEVEL*0.4,t+0.3); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(ac.destination);
+    src.start(t); src.stop(t+dur);
+    window.__swishCount=(window.__swishCount||0)+1;
+  }
+  flip.on('changeState',function(e){ if(e.data==='flipping') swish(); });
+  sndBtn.onclick=function(){ soundOn=!soundOn; setBtn(); try{ localStorage.setItem('flipSound',soundOn?'on':'off'); }catch(e){} };
+  function go(p){ flip.turnToPage(Math.max(0,Math.min(N-1,p-1))); upd(); }
+  document.getElementById('prev').onclick=function(){flip.flipPrev();};
+  document.getElementById('next').onclick=function(){flip.flipNext();};
+  document.getElementById('first').onclick=function(){go(1);};
+  document.getElementById('last').onclick=function(){go(N);};
+  document.querySelectorAll('.toc button').forEach(function(b){b.onclick=function(){flip.flip(Number(b.dataset.p)-1);};});
+  var fsb=document.getElementById('fs');
+  fsb.onclick=function(){
+    try{
+      if(document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen().catch(function(){fsb.hidden=true;});
+    }catch(e){fsb.hidden=true;}
+  };
+  if(!document.documentElement.requestFullscreen) fsb.hidden=true;
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea')) return;
+    if(e.key==='ArrowRight'){flip.flipNext();} else if(e.key==='ArrowLeft'){flip.flipPrev();}
+  });
+  var m=/^#p(\d+)$/.exec(location.hash); if(m) go(Number(m[1]));
+  setTimeout(upd,50);
+})();
+</script>
+
+</body>
+</html>
