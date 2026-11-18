@@ -315,10 +315,11 @@ function signupBlock(a) {
     return `<span class="note">報名資訊即將公布，請留意<a href="${LINE_URL}" target="_blank" rel="noopener">官方 LINE</a> 通知。</span>`;
   }
   if (a.status === '招生額滿') return `<span class="note">本場已招生額滿，感謝大家的支持。</span>`;
-  if (a.signupOpen) {
-    if (a.memberLink && !['已截止報名','請洽官方LINE'].includes(a.memberLink))
-      html += `<a class="btn btn-gold" href="${esc(a.memberLink)}" target="_blank" rel="noopener">立即報名</a>`;
-    if (a.friendLink && a.friendLink !== '請洽官方LINE')
+  // 開放報名條件：L 欄（開放LINE OA報名）= Y，且 M 欄（會員報名連結）是有效網址；L 欄空白則不開放
+  const isLink = s => /^https?:\/\/\S+$/i.test(s || '');
+  if (a.signupOpen && isLink(a.memberLink)) {
+    html += `<a class="btn btn-gold" href="${esc(a.memberLink)}" target="_blank" rel="noopener">立即報名</a>`;
+    if (isLink(a.friendLink))
       html += `<a class="btn btn-navy" href="${esc(a.friendLink)}" target="_blank" rel="noopener">群友報名連結</a>`;
   }
   if (!html) html = `<span class="note">報名請洽<a href="${LINE_URL}" target="_blank" rel="noopener">白袍人生學院官方 LINE</a></span>`;
